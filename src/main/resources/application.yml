@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: "todoList"
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/todolist
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+app:
+  secret:
+    string: "asd56f46as15fd654asdf654asfd65as4dfasf6d54"
+server:
+  port: 8080
