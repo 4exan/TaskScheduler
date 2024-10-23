@@ -29,12 +29,11 @@ export default class AuthService {
 
   static async tokenValidation(token) {
     try {
-      const response = await axios.post(`${this.BASE_URL}/validate`, {
+      const response = await axios.get(`${this.BASE_URL}/validate`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return response.data;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw err;
     }
   }
 

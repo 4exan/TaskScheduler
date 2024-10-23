@@ -15,18 +15,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const isTokenExpired = async () => {
-    const localToken = localStorage.getItem("token");
-    setPayload(() => (payload.token = localToken));
-    try {
-      const response = await AuthService.tokenValidation(payload);
-      console.log(response);
-      if (response === 200) {
-        login();
-      } else {
-        logout();
-      }
-    } catch (e) {
-      throw e;
+    if (isAuthenticated) {
+      login();
+    } else {
+      logout();
     }
   };
 

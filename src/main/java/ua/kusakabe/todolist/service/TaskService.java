@@ -113,4 +113,26 @@ public class TaskService {
         }
     }
 
+    public TaskDto toggleComplete(String header, long taskId) {
+        TaskDto res = new TaskDto();
+        checkIsOwnerOfTask(header, taskId);
+        try{
+            Task toUpdate = taskRepository.findById(taskId).orElseThrow(()-> new RuntimeException("No such task in repository!"));
+            toUpdate.setCompleted(!toUpdate.isCompleted());
+            LOGGER.info(toUpdate.toString());
+            Task result = taskRepository.save(toUpdate);
+            if(result.getId() > 0){
+                LOGGER.info("Task completed successfully!");
+                res.setStatusCode(200);
+                res.setMessage("Task completed successfully!");
+            } else {
+                LOGGER.warn("Error while complete task!");
+            }
+        } catch (Exception e){
+            LOGGER.error("Error while completing task -> {}", e.getMessage());
+            res.setStatusCode(500);
+            res.setMessage(e.getMessage());
+        }
+        return res;
+    }
 }

@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-crust">
+      <nav className="bg-crust sticky top-0">
         <ul className="p-4 flex">
           {
             <li className="mr-2 inline text-subtext-0 text-xl font-semibold transition-all hover:text-text">

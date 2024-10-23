@@ -23,9 +23,14 @@ public class TaskController {
         return ResponseEntity.ok(taskService.createTask(header, req));
     }
 
-    @PatchMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<TaskDto> editTask(@RequestHeader("Authorization") String header, @PathVariable long id, @RequestBody TaskDto req){
         return ResponseEntity.ok(taskService.updateTask(header, id, req));
+    }
+
+    @PutMapping("/set-completed/{taskId}")
+    public ResponseEntity<TaskDto> toggleCompleted(@RequestHeader("Authorization") String header, @PathVariable long taskId){
+        return ResponseEntity.ok(taskService.toggleComplete(header, taskId));
     }
 
     @DeleteMapping("/remove/{id}")
