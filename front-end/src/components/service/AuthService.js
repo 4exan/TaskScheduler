@@ -29,9 +29,13 @@ export default class AuthService {
 
   static async tokenValidation(token) {
     try {
-      const response = await axios.get(`${this.BASE_URL}/validate`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.post(
+        `${this.BASE_URL}/validate`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
     } catch (err) {
       throw err;
     }

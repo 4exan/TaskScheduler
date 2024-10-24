@@ -5,6 +5,9 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthencticated] = useState(false);
+  const [authToken, setAuthToken] = useState(() =>
+    localStorage.getItem("token"),
+  );
   const [isAdmin, setIsAdmin] = useState(false);
   const [payload, setPayload] = useState({
     token: "",
@@ -15,10 +18,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const isTokenExpired = async () => {
-    if (isAuthenticated) {
-      login();
+    if (authToken) {
+      try {
+        AuthService.tokenValidation(authToken);
+        localStorage.setItem("token", authToken);
+        login();
+      } catch (e) {
+        localStorage.removeItem("token");
+        logout();
+        throw e;
+      }
     } else {
-      logout();
+      localStorage.removeItem("token");
     }
   };
 

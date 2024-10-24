@@ -39,7 +39,7 @@ export default function ({ task, key }) {
     <>
       <div className="flex">
         <div
-          className={`${isCompleted ? `bg-opacity-40` : `bg-opacity-100`} p-2 mt-2 bg-mantle rounded-l-lg w-1/2`}
+          className={`${isCompleted ? `bg-opacity-40 hover:bg-opacity-100` : `bg-opacity-100`} p-2 mt-2 bg-mantle rounded-l-lg w-1/2`}
         >
           <div className="border-b border-subtext-0 flex">
             <h1 className="text-2xl text-text font-semibold overflow-auto break-words ">
@@ -48,7 +48,7 @@ export default function ({ task, key }) {
             <h1
               className={`${setPriorityColor(task.priority)} text-2xl font-semibold ml-auto mr-2`}
             >
-              {task.priority}
+              {isCompleted ? `Completed` : `${task.priority}`}
             </h1>
           </div>
           <div className="h-fit">
@@ -57,7 +57,9 @@ export default function ({ task, key }) {
             </p>
           </div>
         </div>
-        <div className="mt-2 px-2 w-6 bg-mantle rounded-r-lg flex items-center transition-all hover:w-fit">
+        <div
+          className={`${isCompleted ? `opacity-40 hover:opacity-100` : `opacity-100`} mt-2 px-2 w-6 bg-mantle rounded-r-lg flex items-center transition-all hover:w-fit`}
+        >
           <p className="text-xl text-subtext-1 font-semibold">{`>`}</p>
           <ul className="inline overflow-hidden mx-2 max-h-12">
             <li className="inline mr-2 overflow-hidden min-w-fit">

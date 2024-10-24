@@ -35,7 +35,10 @@ export default function LoginPage() {
     <>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="flex border border-subtext-1 rounded-lg">
-          <div className="w-1/2 p-2">
+          <div className="p-2">
+            <h1 className="text-xl text-text font-semibold text-center">
+              Login:
+            </h1>
             <form className="last:text-center" onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -44,6 +47,7 @@ export default function LoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              <br />
               <input
                 type="password"
                 placeholder="Password"
@@ -51,15 +55,13 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <br />
               <input
                 type="submit"
                 className="px-2 py-1 rounded-lg text-subtext-1 bg-crust cursor-pointer transition-all hover:text-crust hover:bg-green w-fit"
                 value="Login"
               />
             </form>
-          </div>
-          <div className="w-1/2 p-2">
-            <h1>world</h1>
           </div>
         </div>
       </div>

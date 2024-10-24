@@ -86,7 +86,7 @@ export default function TaskPage() {
             </li>
             <li className="inline mr-2">
               <select
-                className=" p-2 border-2 border-transparent bg-mauve rounded-lg transition-all hover:bg-blue hover:text-crust hover:border-surface-0"
+                className=" p-2 border-2 border-transparent bg-mauve rounded-lg transition-all hover:cursor-pointer hover:text-crust hover:border-surface-0"
                 value={sort}
                 onChange={(e) => setSort(e.target.value)}
               >
@@ -99,7 +99,7 @@ export default function TaskPage() {
             </li>
             <li className="inline">
               <button className="p-2 border-2 border-transparent bg-mauve rounded-lg transition-all hover:bg-red hover:text-crust hover:border-surface-0">
-                Add new
+                Button
               </button>
             </li>
           </ul>
